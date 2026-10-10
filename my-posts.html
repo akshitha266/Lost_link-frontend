@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Posts – LostLink</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main class="main-content">
+    <div class="container">
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge badge-category" style="margin-bottom: 0.5rem;">User Management</span>
+          <h1 style="font-size: 2rem;">My Reported Items</h1>
+          <p>Manage, edit, or resolve the lost and found items you have listed on LostLink.</p>
+        </div>
+        <div style="display: flex; gap: 0.75rem;">
+          <a href="post-lost.html" class="btn btn-warning btn-sm">+ Post Lost</a>
+          <a href="post-found.html" class="btn btn-success btn-sm">+ Post Found</a>
+        </div>
+      </div>
+
+      <!-- Filter Tabs -->
+      <div class="nav-tabs">
+        <button class="nav-tab-btn active" data-post-filter="ALL">All Posts</button>
+        <button class="nav-tab-btn" data-post-filter="LOST">Lost Items</button>
+        <button class="nav-tab-btn" data-post-filter="FOUND">Found Items</button>
+        <button class="nav-tab-btn" data-post-filter="ACTIVE">Active (Unresolved)</button>
+        <button class="nav-tab-btn" data-post-filter="RESOLVED">Resolved / Reunited</button>
+      </div>
+
+      <!-- User Posts List Container (Injected by items.js) -->
+      <div id="myPostsContainer">
+        <div class="spinner"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Edit Item Modal -->
+  <div class="modal-overlay" id="editItemModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="font-size: 1.25rem;">Edit Item Listing</h3>
+        <button class="modal-close-btn" onclick="closeModal('editItemModal')">&times;</button>
+      </div>
+      <form id="editItemForm">
+        <div class="modal-body">
+          <input type="hidden" name="itemId">
+          <div class="form-group">
+            <label class="form-label" for="editTitle">Title</label>
+            <input type="text" class="form-control" id="editTitle" name="title" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="editLocation">Location</label>
+            <input type="text" class="form-control" id="editLocation" name="location" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="editDesc">Description</label>
+            <textarea class="form-textarea" id="editDesc" name="description" rows="3" required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" onclick="closeModal('editItemModal')">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-sm">Save Changes</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/items.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Handle Edit Item Modal submit
+    document.addEventListener("DOMContentLoaded", () => {
+      const editForm = document.getElementById("editItemForm");
+      if (editForm) {
+        editForm.addEventListener("submit", async (e) => {
+          e.preventDefault();
+          const id = editForm.itemId.value;
+          try {
+            await api.request(`/items/${id}`, {
+              method: "PUT",
+              body: JSON.stringify({
+                title: editForm.title.value.trim(),
+                location: editForm.location.value.trim(),
+                description: editForm.description.value.trim()
+              })
+            });
+            closeModal("editItemModal");
+            showToast("Item details updated successfully.", "success");
+            setTimeout(() => window.location.reload(), 600);
+          } catch (err) {
+            showToast(err.message || "Failed to save edits", "error");
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>

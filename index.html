@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LostLink – Secure Digital Lost-and-Found System</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Navigation Bar Placeholder -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Hero Section -->
+  <header style="background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%); color: white; padding: 4.5rem 0 5.5rem; position: relative; overflow: hidden;">
+    <div class="container" style="position: relative; z-index: 2; text-align: center;">
+      <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(8px); padding: 0.35rem 1rem; border-radius: var(--radius-full); font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; border: 1px solid rgba(255,255,255,0.25);">
+        <span>🛡️ Campus-Wide Trusted Verification Network</span>
+      </div>
+
+      <h1 style="color: white; font-size: 3rem; font-weight: 800; max-width: 840px; margin: 0 auto 1.25rem; line-height: 1.15;">
+        Lost Something On Campus? <br>Let’s Reconnect You.
+      </h1>
+      <p style="color: #e0e7ff; font-size: 1.2rem; max-width: 650px; margin: 0 auto 2.5rem; line-height: 1.6;">
+        LostLink provides a secure, privacy-first platform to report lost belongings, log found items, and verify ownership through cryptographic challenges.
+      </p>
+
+      <!-- Instant Search Bar in Hero -->
+      <div style="max-width: 680px; margin: 0 auto 2.25rem;">
+        <form action="search.html" method="GET" style="background: white; padding: 0.5rem; border-radius: var(--radius-full); display: flex; box-shadow: var(--shadow-xl);">
+          <input type="text" name="query" placeholder="Search by item name, category, or building..." 
+                 style="flex: 1; border: none; padding: 0.75rem 1.5rem; font-size: 1rem; outline: none; border-radius: var(--radius-full); color: var(--text-primary);">
+          <button type="submit" class="btn btn-primary" style="border-radius: var(--radius-full); padding: 0.75rem 1.75rem;">
+            Search Catalog
+          </button>
+        </form>
+      </div>
+
+      <!-- Quick Action Buttons -->
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="post-lost.html" class="btn btn-warning btn-lg" style="box-shadow: var(--shadow-md);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+          I Lost An Item
+        </a>
+        <a href="post-found.html" class="btn btn-success btn-lg" style="box-shadow: var(--shadow-md);">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          I Found An Item
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live Statistics Counter -->
+  <section style="margin-top: -2.5rem; position: relative; z-index: 5;">
+    <div class="container">
+      <div class="stats-grid" style="box-shadow: var(--shadow-lg);">
+        <div class="stat-card">
+          <div class="stat-icon warning">📦</div>
+          <div class="stat-meta">
+            <div class="stat-value" id="homeLostStats">142</div>
+            <div class="stat-label">Active Lost Items</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon success">🔍</div>
+          <div class="stat-meta">
+            <div class="stat-value" id="homeFoundStats">189</div>
+            <div class="stat-label">Turned-in Found Items</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon primary">🤝</div>
+          <div class="stat-meta">
+            <div class="stat-value" id="homeResolvedStats">96%</div>
+            <div class="stat-label">Verified Reconnect Rate</div>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon info">🛡️</div>
+          <div class="stat-meta">
+            <div class="stat-value">100%</div>
+            <div class="stat-label">Anti-Fraud Security</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How LostLink Works -->
+  <section class="main-content" id="how-it-works" style="padding-top: 3.5rem;">
+    <div class="container">
+      <div style="text-align: center; max-width: 680px; margin: 0 auto 3.5rem;">
+        <span class="badge badge-category" style="margin-bottom: 0.5rem;">Process Flow</span>
+        <h2 style="font-size: 2.25rem; margin-bottom: 0.75rem;">How LostLink Secures Campus Recovery</h2>
+        <p>Simple 3-step workflow designed to eliminate false claims while ensuring fast return of personal items.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+        <div class="card" style="padding: 2rem; text-align: center;">
+          <div style="width: 64px; height: 64px; background: var(--primary-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 1.5rem;">
+            1
+          </div>
+          <h3 style="margin-bottom: 0.75rem;">Post Your Listing</h3>
+          <p style="font-size: 0.95rem; line-height: 1.6;">
+            Report a lost or found item with details, photos, and a custom private verification question that only the genuine owner can answer.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 2rem; text-align: center;">
+          <div style="width: 64px; height: 64px; background: #fef3c7; color: #92400e; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 1.5rem;">
+            2
+          </div>
+          <h3 style="margin-bottom: 0.75rem;">Intelligent Matching</h3>
+          <p style="font-size: 0.95rem; line-height: 1.6;">
+            Our algorithm cross-references categories, titles, keywords, and campus locations to suggest instant matches between lost and found items.
+          </p>
+        </div>
+
+        <div class="card" style="padding: 2rem; text-align: center;">
+          <div style="width: 64px; height: 64px; background: var(--success-light); color: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 800; margin: 0 auto 1.5rem;">
+            3
+          </div>
+          <h3 style="margin-bottom: 0.75rem;">Verify & Reconnect</h3>
+          <p style="font-size: 0.95rem; line-height: 1.6;">
+            Claimants answer the private verification challenge. Once approved by the finder or campus security, items are safely handed over.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Recent Listings Showcase -->
+  <section style="background: white; padding: 4rem 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+    <div class="container">
+      <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge badge-category" style="margin-bottom: 0.5rem;">Live Feed</span>
+          <h2 style="font-size: 1.85rem;">Recent Campus Listings</h2>
+          <p>Browse recently reported lost & found items across university grounds.</p>
+        </div>
+        <a href="search.html" class="btn btn-outline">View All Listings &rarr;</a>
+      </div>
+
+      <div id="homeRecentItemsGrid" class="items-grid">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Campus Safety Call To Action -->
+  <section style="padding: 4.5rem 0; text-align: center; background: var(--bg-body);">
+    <div class="container container-narrow">
+      <h2 style="font-size: 2.25rem; margin-bottom: 1rem;">Protect Your Belongings Today</h2>
+      <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 2rem;">
+        Join students, faculty, and campus security in maintaining a reliable, trustworthy digital lost-and-found registry.
+      </p>
+      <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+        <a href="register.html" class="btn btn-primary btn-lg">Create Student Account</a>
+        <a href="search.html" class="btn btn-secondary btn-lg">Search Lost Items</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Placeholder -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="js/api.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/items.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Load recent items for index showcase
+    document.addEventListener("DOMContentLoaded", async () => {
+      const showcaseGrid = document.getElementById("homeRecentItemsGrid");
+      if (showcaseGrid) {
+        try {
+          const items = await api.request("/items");
+          const recent = items.slice(0, 4);
+          if (recent.length > 0) {
+            showcaseGrid.innerHTML = recent.map(i => renderItemCardHtml(i)).join("");
+          } else {
+            showcaseGrid.innerHTML = `<div style="grid-column: 1 / -1; text-align: center; color: var(--text-muted);">No items reported yet.</div>`;
+          }
+
+          // Update numbers
+          const lostCount = items.filter(i => i.type === "LOST").length;
+          const foundCount = items.filter(i => i.type === "FOUND").length;
+          const resolvedCount = items.filter(i => i.status === "RESOLVED").length;
+          const lostEl = document.getElementById("homeLostStats");
+          const foundEl = document.getElementById("homeFoundStats");
+          if (lostEl) lostEl.textContent = lostCount;
+          if (foundEl) foundEl.textContent = foundCount;
+        } catch (e) {
+          console.error("Showcase load error", e);
+        }
+      }
+    });
+  </script>
+</body>
+</html>

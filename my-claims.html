@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Claims – LostLink</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main class="main-content">
+    <div class="container">
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge badge-category" style="margin-bottom: 0.5rem;">Ownership Status</span>
+          <h1 style="font-size: 2rem;">My Ownership Claims</h1>
+          <p>Track verification statuses for items you have claimed across campus.</p>
+        </div>
+        <a href="search.html" class="btn btn-primary btn-sm">Find More Items &rarr;</a>
+      </div>
+
+      <!-- Information Card -->
+      <div class="notice-box notice-info" style="margin-bottom: 1.5rem;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        <div>
+          <strong>Verification Process Note:</strong>
+          <span style="font-size: 0.85rem; display: block; margin-top: 0.2rem;">
+            When you submit a claim, the item finder or campus security office reviews your challenge response. Once approved, you will receive pickup instructions.
+          </span>
+        </div>
+      </div>
+
+      <!-- Claims List Container (Injected by claims.js) -->
+      <div id="myClaimsList">
+        <div class="spinner"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/claims.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

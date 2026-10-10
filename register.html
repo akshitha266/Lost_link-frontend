@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register – LostLink</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main class="main-content" style="display: flex; align-items: center; justify-content: center; padding: 3rem 1rem;">
+    <div class="container container-narrow" style="max-width: 520px;">
+      <div class="card" style="box-shadow: var(--shadow-lg);">
+        <div class="card-header" style="text-align: center; display: block; padding-bottom: 0.75rem;">
+          <div class="brand-icon" style="margin: 0 auto 0.75rem; width: 44px; height: 44px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+          </div>
+          <h2>Join LostLink</h2>
+          <p style="font-size: 0.9rem; margin-top: 0.25rem;">Create a campus account to report & recover belongings</p>
+        </div>
+
+        <div class="card-body">
+          <div id="registerErrorAlert" class="notice-box notice-warning" style="display: none; color: #991b1b; background: #fee2e2; border-color: #fca5a5;"></div>
+
+          <form id="registerForm" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="regName">Full Legal Name <span class="required">*</span></label>
+              <input type="text" class="form-control" id="regName" name="name" placeholder="e.g., Alex Johnson" required>
+              <div class="invalid-feedback">Full name is required.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regEmail">University Email <span class="required">*</span></label>
+              <input type="email" class="form-control" id="regEmail" name="email" placeholder="e.g., student@college.edu" autocomplete="email" required>
+              <div class="invalid-feedback">Please provide a valid university email address.</div>
+              <span class="form-help">Notifications and claim confirmations will be sent to this email.</span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="regPassword">Password <span class="required">*</span></label>
+                <input type="password" class="form-control" id="regPassword" name="password" placeholder="••••••••" autocomplete="new-password" required>
+                <div class="invalid-feedback">At least 6 characters required.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="regConfirmPassword">Confirm Password <span class="required">*</span></label>
+                <input type="password" class="form-control" id="regConfirmPassword" name="confirmPassword" placeholder="••••••••" autocomplete="new-password" required>
+                <div class="invalid-feedback">Passwords must match.</div>
+              </div>
+            </div>
+
+            <div class="form-check" style="margin-bottom: 1.5rem; margin-top: 0.5rem;">
+              <input class="form-check-input" type="checkbox" id="regTerms" required checked>
+              <label for="regTerms" style="font-size: 0.85rem; color: var(--text-secondary); cursor: pointer;">
+                I agree to the <a href="#">Campus Lost & Found Honor Code</a> and understand that false claims carry disciplinary consequences.
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block btn-lg">
+              Create Account
+            </button>
+          </form>
+        </div>
+
+        <div class="card-footer" style="text-align: center; font-size: 0.9rem;">
+          Already have an account? <a href="login.html" style="font-weight: 600;">Sign in here</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

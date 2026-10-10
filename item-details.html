@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Item Details – LostLink</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main class="main-content">
+    <div class="container" style="max-width: 1040px;">
+      
+      <!-- Back Button -->
+      <div style="margin-bottom: 1.5rem;">
+        <a href="search.html" class="btn btn-secondary btn-sm">
+          &larr; Back to Catalog
+        </a>
+      </div>
+
+      <!-- Item Details Main Card (Injected by items.js) -->
+      <div id="itemDetailsContainer">
+        <div class="spinner"></div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Report Item Modal -->
+  <div class="modal-overlay" id="reportItemModal">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="font-size: 1.2rem;">Report Listing</h3>
+        <button class="modal-close-btn" onclick="closeModal('reportItemModal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1rem;">
+          If this listing contains inappropriate content, copyright infringement, or fraudulent information, please describe the issue for our campus moderation team.
+        </p>
+        <div class="form-group">
+          <label class="form-label" for="reportReason">Reason for Report</label>
+          <select class="form-select" id="reportReason">
+            <option value="fake">Suspected fake or troll item</option>
+            <option value="offensive">Offensive or prohibited content</option>
+            <option value="privacy">Reveals sensitive personal information</option>
+            <option value="other">Other policy violation</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reportDetails">Additional Details</label>
+          <textarea class="form-textarea" id="reportDetails" rows="3" placeholder="Explain why this listing should be reviewed..."></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary btn-sm" onclick="closeModal('reportItemModal')">Cancel</button>
+        <button class="btn btn-danger btn-sm" onclick="submitReportModal()">Submit Report</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/items.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    function submitReportModal() {
+      closeModal('reportItemModal');
+      showToast("Thank you. This listing has been flagged for administrative review.", "info");
+    }
+  </script>
+</body>
+</html>

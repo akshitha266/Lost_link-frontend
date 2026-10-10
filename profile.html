@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile – LostLink</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main class="main-content" id="profileSection">
+    <div class="container container-narrow" style="max-width: 760px;">
+      
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge badge-category" style="margin-bottom: 0.5rem;">Account Center</span>
+          <h1 style="font-size: 2rem;">Profile Settings</h1>
+          <p>Manage your account credentials, contact info, and security preferences.</p>
+        </div>
+        <button id="profileLogoutBtn" class="btn btn-outline btn-sm" style="color: var(--danger); border-color: var(--danger);">
+          Sign Out
+        </button>
+      </div>
+
+      <!-- User Info Summary Banner -->
+      <div class="card" style="padding: 1.5rem; margin-bottom: 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+          <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold;">
+            🎓
+          </div>
+          <div>
+            <h3 style="margin-bottom: 0.2rem;" id="userProfileDisplayName">Student Account</h3>
+            <div style="font-size: 0.85rem; color: var(--text-muted);">
+              Role: <strong id="profileRole">USER</strong> &bull; Member since <span id="profileJoined">Oct 2026</span>
+            </div>
+          </div>
+        </div>
+        <span class="badge badge-approved" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;">Verified Student ID</span>
+      </div>
+
+      <!-- Edit Information Card -->
+      <div class="card" style="margin-bottom: 2rem;">
+        <div class="card-header">
+          <h3 style="font-size: 1.25rem;">Personal Information</h3>
+        </div>
+        <div class="card-body">
+          <form id="profileForm">
+            <div class="form-group">
+              <label class="form-label" for="profileName">Full Name <span class="required">*</span></label>
+              <input type="text" class="form-control" id="profileName" name="name" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="profileEmail">University Email</label>
+              <input type="email" class="form-control" id="profileEmail" name="email" readonly style="background-color: var(--bg-subtle); cursor: not-allowed;">
+              <span class="form-help">Institutional email addresses are managed by the campus registrar.</span>
+            </div>
+            <button type="submit" class="btn btn-primary">Save Profile Details</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Security / Change Password Card -->
+      <div class="card">
+        <div class="card-header">
+          <h3 style="font-size: 1.25rem;">Security & Password</h3>
+        </div>
+        <div class="card-body">
+          <form id="passwordForm">
+            <div class="form-group">
+              <label class="form-label" for="currentPassword">Current Password <span class="required">*</span></label>
+              <input type="password" class="form-control" id="currentPassword" name="currentPassword" placeholder="••••••••" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="newPassword">New Password <span class="required">*</span></label>
+                <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="••••••••" required>
+                <span class="form-help">Must be at least 6 characters.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="confirmNewPassword">Confirm New Password <span class="required">*</span></label>
+                <input type="password" class="form-control" id="confirmNewPassword" name="confirmNewPassword" placeholder="••••••••" required>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-secondary">Update Password</button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

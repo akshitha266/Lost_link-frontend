@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Found Item – LostLink</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main class="main-content">
+    <div class="container container-narrow">
+      
+      <div style="margin-bottom: 1.5rem;">
+        <a href="dashboard.html" class="btn btn-secondary btn-sm">&larr; Back to Dashboard</a>
+      </div>
+
+      <div class="card" style="box-shadow: var(--shadow-md);">
+        <div class="card-header" style="display: block;">
+          <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.25rem;">
+            <span class="badge badge-found">Report Found Item</span>
+          </div>
+          <h2 style="font-size: 1.65rem;">Did You Find an Item On Campus?</h2>
+          <p style="font-size: 0.9rem; margin-top: 0.25rem;">Thank you for being an honest member of our college community! Log the item details below.</p>
+        </div>
+
+        <div class="card-body">
+          <form id="postItemForm" data-item-type="FOUND" novalidate>
+            
+            <div class="form-group">
+              <label class="form-label" for="itemTitle">Item Title / Name <span class="required">*</span></label>
+              <input type="text" class="form-control" id="itemTitle" name="title" placeholder="e.g., Wireless JBL Tune 510BT Bluetooth Headphones" required>
+              <div class="invalid-feedback">Item title must be at least 3 characters.</div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label" for="itemCategory">Category <span class="required">*</span></label>
+                <select class="form-select" id="itemCategory" name="category" required>
+                  <option value="">Select Category</option>
+                  <option value="Electronics">Electronics (Laptops, Phones, Earbuds)</option>
+                  <option value="Wallets & IDs">Wallets & IDs</option>
+                  <option value="Keys">Keys & Keychains</option>
+                  <option value="Books & Stationery">Books & Stationery</option>
+                  <option value="Bags & Clothing">Bags, Backpacks & Clothing</option>
+                  <option value="Accessories">Jewelry & Accessories</option>
+                  <option value="Others">Others</option>
+                </select>
+                <div class="invalid-feedback">Please select a category.</div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="itemDate">Date Found <span class="required">*</span></label>
+                <input type="date" class="form-control" id="itemDate" name="date" required>
+                <div class="invalid-feedback">Please select the date found.</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="itemLocation">Where On Campus Did You Find It? <span class="required">*</span></label>
+              <input type="text" class="form-control" id="itemLocation" name="location" placeholder="e.g., Library 3rd Floor study cubicle, or Cafeteria table 4" required>
+              <div class="invalid-feedback">Please specify the campus location.</div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="itemDescription">General Description <span class="required">*</span></label>
+              <textarea class="form-textarea" id="itemDescription" name="description" rows="4" placeholder="Describe the item general appearance (color, condition, general brand). Avoid mentioning distinct private details you will use in the verification question below..." required></textarea>
+              <div class="invalid-feedback">Please write a general description (min 15 characters).</div>
+            </div>
+
+            <!-- Image Upload Zone -->
+            <div class="form-group">
+              <label class="form-label">Item Photo (Optional)</label>
+              <div class="image-upload-zone" onclick="document.getElementById('itemImageInput').click()">
+                <div id="uploadPrompt">
+                  <div style="font-size: 2rem; margin-bottom: 0.5rem;">📸</div>
+                  <div style="font-weight: 600; color: var(--primary);">Click or drag photo of the found item</div>
+                  <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 0.25rem;">Supported: JPG, PNG, WebP (Max 5MB)</div>
+                </div>
+                <div class="image-preview-container" id="imagePreviewBox">
+                  <img id="previewImg" src="" alt="Selected Preview">
+                  <button type="button" class="image-remove-btn" id="removeImageBtn" title="Remove image">&times;</button>
+                </div>
+              </div>
+              <input type="file" id="itemImageInput" accept="image/*" style="display: none;">
+            </div>
+
+            <!-- Ownership Verification Challenge -->
+            <div style="background: var(--bg-subtle); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-color); margin-top: 1.5rem; margin-bottom: 1.5rem;">
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <span style="font-size: 1.25rem;">🛡️</span>
+                <h4 style="font-size: 1.05rem;">Anti-Fraud Verification Challenge</h4>
+              </div>
+              <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+                To prevent false claimants, create a challenge question based on a unique detail visible only to you (e.g. engravings, wallpaper, keychain charm, or item contents).
+              </p>
+
+              <div class="form-group">
+                <label class="form-label" for="verificationQuestion">
+                  Public Challenge Question <span class="required">*</span>
+                </label>
+                <input type="text" class="form-control" id="verificationQuestion" name="verificationQuestion" placeholder="e.g., What color is the zipper pull, or what is the initial engraved on the back?" required>
+                <div class="invalid-feedback">Please write a challenge question for potential owners.</div>
+              </div>
+
+              <div class="form-group" style="margin-bottom: 0;">
+                <label class="form-label" for="verificationAnswer">
+                  Correct Answer (Known Only To You & The True Owner) <span class="required">*</span>
+                </label>
+                <input type="text" class="form-control" id="verificationAnswer" name="verificationAnswer" placeholder="e.g., Neon green zipper pull with initials 'TK'" required>
+                <div class="invalid-feedback">Please provide the secret answer.</div>
+                <div class="notice-box notice-warning" style="margin-top: 0.75rem; margin-bottom: 0;">
+                  <span>🔒 <strong>Important:</strong> The verification answer is encrypted and NEVER revealed to other users or on the public website.</span>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success btn-lg btn-block">
+              Submit Found Item Report
+            </button>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/items.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

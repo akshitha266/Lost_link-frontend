@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Catalog – LostLink</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <div id="navbar-placeholder"></div>
+
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- Search Header -->
+      <div class="search-header">
+        <h1 style="font-size: 1.85rem; margin-bottom: 0.5rem;">Explore Campus Lost & Found Catalog</h1>
+        <p style="margin-bottom: 1.5rem;">Search active listings or apply filters to locate lost belongings.</p>
+
+        <form id="searchFilterForm" onsubmit="return false;">
+          <div class="search-input-group">
+            <div class="search-input-wrapper">
+              <div class="search-input-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              </div>
+              <input type="text" class="form-control search-input" id="searchKeyword" placeholder="Search keywords (e.g., MacBook, Hydro Flask, Keys, Calculator)...">
+            </div>
+            <button type="submit" class="btn btn-primary" style="height: 52px; padding: 0 1.75rem;">
+              Search
+            </button>
+          </div>
+
+          <!-- Quick Filter Pills -->
+          <div class="filter-pills">
+            <span style="font-size: 0.85rem; font-weight: 600; align-self: center; margin-right: 0.25rem; color: var(--text-muted);">Quick Filter:</span>
+            <button type="button" class="filter-pill active" data-filter-type="type" data-filter-val="ALL">All Items</button>
+            <button type="button" class="filter-pill" data-filter-type="type" data-filter-val="LOST">Lost Only</button>
+            <button type="button" class="filter-pill" data-filter-type="type" data-filter-val="FOUND">Found Only</button>
+            <button type="button" class="filter-pill" data-filter-type="category" data-filter-val="Electronics">Electronics</button>
+            <button type="button" class="filter-pill" data-filter-type="category" data-filter-val="Wallets & IDs">Wallets & IDs</button>
+            <button type="button" class="filter-pill" data-filter-type="category" data-filter-val="Keys">Keys</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Main Search Layout: Filter Sidebar + Results Grid -->
+      <div class="search-layout">
+        <!-- Sidebar Filters -->
+        <aside class="filter-sidebar">
+          <h3>
+            <span>Filter Catalog</span>
+            <button type="button" id="resetFiltersBtn" class="btn btn-outline btn-sm" style="font-size: 0.75rem; padding: 0.2rem 0.5rem;">Reset</button>
+          </h3>
+
+          <div class="filter-section">
+            <label class="filter-title" for="searchType">Listing Type</label>
+            <select class="form-select" id="searchType">
+              <option value="ALL">All Listings (Lost & Found)</option>
+              <option value="LOST">Lost Items</option>
+              <option value="FOUND">Found Items</option>
+            </select>
+          </div>
+
+          <div class="filter-section">
+            <label class="filter-title" for="searchCategory">Category</label>
+            <select class="form-select" id="searchCategory">
+              <option value="ALL">All Categories</option>
+              <option value="Electronics">Electronics (Laptops, Phones, Audio)</option>
+              <option value="Wallets & IDs">Wallets, Purses & IDs</option>
+              <option value="Keys">Keys & Access Fobs</option>
+              <option value="Books & Stationery">Books & Stationery</option>
+              <option value="Bags & Clothing">Bags, Backpacks & Clothing</option>
+              <option value="Accessories">Jewelry & Accessories</option>
+              <option value="Others">Others</option>
+            </select>
+          </div>
+
+          <div class="filter-section">
+            <label class="filter-title" for="searchLocation">Location</label>
+            <input type="text" class="form-control" id="searchLocation" placeholder="e.g., Library, CS Lab, Cafeteria">
+          </div>
+
+          <div class="filter-section">
+            <label class="filter-title" for="searchStatus">Status</label>
+            <select class="form-select" id="searchStatus">
+              <option value="ALL">All Statuses</option>
+              <option value="ACTIVE" selected>Active Only (Unresolved)</option>
+              <option value="RESOLVED">Reunited / Resolved</option>
+            </select>
+          </div>
+
+          <div style="margin-top: 1rem; padding: 0.75rem; background: var(--bg-body); border-radius: var(--radius-sm); font-size: 0.8rem; color: var(--text-muted);">
+            💡 <em>Tip: Found items require answering the finder's private challenge question to claim.</em>
+          </div>
+        </aside>
+
+        <!-- Search Results Area -->
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+            <div style="font-weight: 600; color: var(--text-secondary);" id="resultsCount">Loading items...</div>
+            <div style="display: flex; gap: 0.5rem;">
+              <a href="post-lost.html" class="btn btn-warning btn-sm">+ Post Lost</a>
+              <a href="post-found.html" class="btn btn-success btn-sm">+ Post Found</a>
+            </div>
+          </div>
+
+          <div id="searchResultsGrid" class="items-grid">
+            <!-- Populated dynamically by search.js -->
+            <div class="spinner"></div>
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination" id="paginationContainer"></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="js/api.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/items.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
